@@ -1,0 +1,2355 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: rgb(227, 232, 233);
+}
+
+#divPage {
+  display: flex;
+}
+
+button {
+  cursor: pointer;
+}
+
+img {
+  image-rendering: pixelated;
+}
+
+@media screen and (max-width: 576px) {
+/******* Selector Generarion ***********/
+
+#divPage > div:last-child {
+  position: fixed;
+  left: 5vw;
+  top: 5vh;
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: center;
+  width: 90vw;
+  z-index: 1;
+}
+
+#divPage > div:last-child.is-hidePanel > div:last-child {
+  transform: translate(150%,0%);
+  z-index: 1;
+}
+
+
+#divPage > div:last-child > div:last-child {
+  display: flex;
+  flex-direction: column;
+  height: 65vh;
+  width: 75vw;
+  border-radius: 10px;
+  justify-content: space-around;
+  background-color: rgba(0, 0, 0, 0.452);
+  transform: translate(-0%,0%);
+  transition: transform .5s ease;
+}
+
+#divPage > div:last-child > div:last-child > div {
+  display: flex;
+  flex-direction: column;
+  height: 60vh;
+}
+
+#divPage > div:last-child > div:last-child > div:first-child {
+  height: 10vh;
+  width: 70vw;
+  margin: auto;
+}
+
+#divPage > div:last-child > div:last-child > div:first-child > h3{
+  width: 60vw;
+  margin: auto;
+  text-align: center;
+  color: rgb(245, 246, 247);
+  font-size: 3.8vw;
+}
+
+#divPage > div:last-child > div:last-child > div:last-child {
+  height: 10vh;
+}
+
+#divPage > div:last-child > div:last-child > div > button {
+  width: 55vw;
+  height: 4vh;
+  border: none;
+  border-radius: 4px;
+  margin: auto;
+  color: rgb(90, 87, 83);
+  font-size: 3vw;
+  background-color: rgb(158, 157, 152);
+}
+
+#divPage > div:last-child > div:last-child > div > button:hover {
+  color: whitesmoke;
+  background-color: rgb(129, 179, 212);
+}
+
+#divPage > div:last-child > div:last-child > div > button:first-child {
+  color: whitesmoke;
+  background-color: rgb(129, 179, 212);
+}
+
+#divPage > div:last-child > div:last-child > div:last-child > button{
+  width: 45vw;
+  height: 3.3vh;
+  margin-top: 1vh;
+  font-size: 3.5vw;
+  color: whitesmoke;
+  background-color: rgb(171, 118, 192);
+  border: none;
+}
+
+#divPage > div:last-child > div:last-child > div:last-child > button:hover {
+  color: whitesmoke;
+  background-color: rgb(171, 118, 192);
+}
+
+#divPage > div:last-child > div:last-child > div:last-child > h3 {
+  font-size: 2.8vw;
+  width: auto;
+  color: rgba(218, 218, 218, 0.692);
+  margin: auto;
+}
+
+/************* Btn hide ***************/
+
+#divBtnHide {
+  position: fixed;
+  top: 73vh;
+  left: 73vw;
+  height: 20vh;
+  margin: auto;
+  width: 10vw;
+  z-index: 2;
+}
+
+#divBtnHide > div {
+  position: relative;
+  display: flex;
+  width: 10vw;
+  flex-direction: column-reverse;
+  justify-content: flex-end;
+  z-index: 100;
+}
+
+#divBtnHide > div > button{
+  position: relative;
+  color: rgb(61, 91, 126);
+  margin: auto;
+  background-color: rgba(197, 213, 226, 0.815);
+  cursor: pointer;
+  margin-top: 1vh;
+  width: 18vw;
+  border-radius: 10%;
+  height: 6vh;
+  font-size: 3vw;
+  border: none;
+}
+
+#divBtnHide > div:last-child {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 15vw;
+  margin-top: 1vh;
+  margin-left: 1vw;
+}
+
+#divBtnHide > div:last-child > div{
+  display: flex;
+  flex-direction: column;
+}
+
+#divBtnHide > div:last-child > div > h3 {
+  font-size: 2vw;
+  margin: auto;
+  color: gray;
+}
+
+#divBtnHide > div:last-child > div > img {
+  width: 15vw;
+  height: 5vw;
+}
+
+#divBtnHide > div:last-child > h3 {
+  font-size: 2vw;
+  margin-top: -2px;
+  color: gray;
+}
+
+/************* Buscador ****************/
+
+#divPokemonSingle {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 90vw;
+  z-index: -1;
+  margin: auto;
+}
+
+#divPokemonSingle.is-hidePanel {
+  z-index: 2;
+}
+
+#divPokemonSingle > div {
+  margin: auto;
+}
+
+#divPokemonSingle > div:first-child{
+  margin: auto;
+  margin-top: 10vh;
+  display: flex;
+  flex-direction: column;
+  height: 22vh;
+}
+
+#divPokemonSingle > div > div > img{
+  width: 23vw;
+  margin: auto;
+  margin-top: 2vh;
+  height: 23vw;
+}
+
+/*pokeball after */
+#divPokemonSingle > div > div > div > img{
+  width: 23vw;
+  margin: auto;
+  margin-top: 2vh;
+  height: 23vw;
+}
+
+#divPokemonSingle > div > div > button{
+  width: 40vw;
+  margin: auto;
+  border: none;
+  background-color: rgb(203, 192, 206);
+  border-radius: 4px;
+  color: whitesmoke;
+  cursor: not-allowed;
+}
+
+#btn {
+  margin: auto;
+}
+
+#divCorrect {
+  width: 90vw;
+  margin: auto;
+}
+
+#divCorrect > h2 {
+  margin: auto;
+  text-align: center;
+  font-size: 90vw;
+  color: rgb(44, 155, 44);
+  font-size: 8vw;
+}
+
+#divLost {
+  width: 90vw;
+  margin: auto;
+}
+
+#divLost > h2 {
+  margin: auto;
+  text-align: center;
+  font-size: 90vw;
+  color: rgb(206, 72, 32);
+  font-size: 8vw;
+}
+
+#divLost {
+  width: 90vw;
+  margin: auto;
+}
+
+#divLost > h2 {
+  margin: auto;
+  text-align: center;
+  font-size: 90vw;
+  color: rgb(182, 83, 37);
+  font-size: 8vw;
+}
+
+#imgPokemon {
+  width: 20vw;
+  filter: brightness(0%);
+}
+
+#imgPokemon.is-correct {
+  filter: brightness(100%);
+}
+
+#divImgShow {
+  width: 50vw;
+  display: flex;
+  flex-direction: column;
+}
+
+#divImgShow > button{
+  margin: auto;
+  border: none;
+  width: 40vw;
+  height: 4vh;
+  font-size: 4vw;
+  background-color: rgb(193, 138, 207);
+  border-radius: 10px;
+  color: whitesmoke;
+}
+
+#divImgPokemonShow > button {
+  border: none;
+  width: 40vw;
+  height: 4vh;
+  border-radius: 10px;
+}
+
+#imgPokeballShow {
+  margin: auto;
+  position: relative;
+  width: 10vw;
+  height: 10vw;
+  animation: pokeball 3s infinite linear;
+}
+
+@keyframes pokeball {
+  15% {
+    transform: rotate(2deg);
+  }
+  30% {
+    transform: rotate(4deg);
+  }
+  45% {
+    transform: rotate(2deg);
+  }
+  60% {
+    transform: rotate(0deg);
+  }
+  75% {
+    transform: rotate(-2deg);
+  }
+  85% {
+    transform: rotate(-4deg);
+  }
+  100% {
+    transform: rotate(-1deg);
+  }
+}
+
+#divCircle {
+  position: relative;
+  background-color: red;
+  z-index: 1;
+  top: -13.9vw;
+  left: 22.75vw;
+  border-radius: 50%;
+  width: 4.5vw;
+  height: 4.5vw;
+  animation: pulse 3s infinite linear;
+}
+
+@keyframes pulse {
+  10% {
+    opacity: 50%;
+  }
+  21% {
+    opacity: 100%;
+
+  }
+  32% {
+    opacity: 50%;
+
+  }
+  45% {
+    opacity: 0%;
+
+  }
+  55% {
+    opacity: 50%;
+
+  }
+  65% {
+    opacity: 100%;
+
+  }
+  85% {
+    opacity: 50%;
+
+  }
+  100% {
+    opacity: 00%;
+
+  }
+}
+
+#divBuscadorPokemon {
+  width: 90vw;
+  height: auto;
+}
+
+#divBuscadorPokemon > div > h2 {
+  text-align: center;
+  font-size: 4.5vw;
+  color: rgb(39, 121, 175);
+}
+
+#divBuscadorPokemon > div > h3 {
+  text-align: center;
+  font-size: 4.5vw;
+  color: rgba(180, 163, 11, 0.658);
+}
+
+#divBuscadorPokemons {
+  width: 90vw;
+  margin: auto;
+}
+
+#divBuscadorPokemons > div > input {
+  border: none;
+  width: 60vw;
+  text-align: center;
+  height: 5vh;
+  margin: auto;
+  font-size: 4vw;
+  border-radius: 3px;
+}
+
+#divBtnOpc {
+  width: 90vw;
+  margin: auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+#divBtnOpc > button {
+  width: 26vw;
+  color: whitesmoke;
+  margin-top: 2vh;
+  height: 4vh;
+  font-size: 4vw;
+  border-radius: 10px;
+  background-color: rgba(121, 95, 122, 0.63);
+  border: none;
+}
+
+#divBuscadorPokemons > div {
+  display: flex;
+  margin: auto;
+  flex-direction: row;
+}
+
+#divBuscadorPokemons > div:last-child {
+  width: 90vw;
+  margin: auto;
+}
+
+#divBuscadorPokemons > div > div > button {
+  background-color: rgb(138, 154, 156);
+  border-radius: 3px;
+  border: none;
+  font-size: 1.1vw;
+  color: antiquewhite;
+  cursor: pointer;
+}
+
+#listPokemons {
+  position: relative;
+  display: flex;
+  margin-top: 2vh;
+  flex-direction: column-reverse;
+  z-index: -1;
+}
+
+#listPokemons > div {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  background-color: rgb(213, 219, 219);
+  height: 8vh;
+  margin: auto;
+  margin-top: 1vh;
+  width: 80vw;
+  justify-content: space-around;
+  border-radius: 5px;
+}
+
+#listPokemons > div.true {
+  background-color: rgb(214, 241, 198);
+}
+
+#listPokemons > div > div:first-child {
+  display: flex;
+  border: rgb(133, 139, 138) solid 1px;
+  width: 7vw;
+  border-radius: 50%;
+  height: 7vw;
+  align-items: center;
+}
+
+#listPokemons > div > div:first-child > h1 {
+  color: gray;
+  font-size: 3vw;
+  margin: auto;
+}
+
+#listPokemons > div > div:first-child > h1.is-true {
+  color: green;
+}
+
+#listPokemons > div > div:first-child > h1 > img {
+  width: 2.5vw;
+}
+
+#listPokemons > div > div > h1 {
+  font-size: 3.5vw;
+  color: rgb(142, 119, 151);
+}
+
+/******** Styles Types *********/
+.flying {
+  color: rgb(243, 233, 233);
+  padding: 2px;
+  font-size: 3vw;
+  width: 12vw;
+  text-align: center;
+  border: rgb(95, 184, 196) 3px solid;
+  background-color: rgb(141, 197, 219);
+  border-radius: 30%;
+}
+
+.electric {
+  color: rgb(209, 120, 37);
+  padding: 2px;
+  font-size: 3vw;
+  width: 12vw;
+  text-align: center;
+  border: rgb(207, 195, 20) 3px solid;
+  background-color: rgb(218, 209, 94);
+  border-radius: 30%;
+}
+
+.poison {
+  color: rgb(221, 176, 247);
+  padding: 2px;
+  font-size: 3vw;
+  width: 12vw;
+  text-align: center;
+  border: rgb(84, 15, 110) 3px solid;
+  background-color: rgb(145, 45, 140);
+  border-radius: 30%;
+}
+
+.grass {
+  color: rgb(33, 73, 36);
+  padding: 2px;
+  font-size: 3vw;
+  width: 12vw;
+  text-align: center;
+  border: rgb(70, 114, 41) 3px solid;
+  background-color: rgb(80, 160, 84);
+  border-radius: 30%;
+}
+
+.bug {
+  color: rgb(10, 175, 21);
+  padding: 2px;
+  font-size: 3vw;
+  width: 12vw;
+  text-align: center;
+  border: rgb(85, 153, 40) 3px solid;
+  background-color: rgb(185, 231, 187);
+  border-radius: 30%;
+}
+
+.fire {
+  color: rgb(163, 7, 7);
+  padding: 2px;
+  font-size: 3vw;
+  width: 12vw;
+  text-align: center;
+  border: rgb(202, 46, 41) 3px solid;
+  background-color: rgb(219, 128, 42);
+  border-radius: 30%;
+}
+
+.ghost {
+  color: rgb(166, 106, 194);
+  padding: 2px;
+  font-size: 3vw;
+  width: 12vw;
+  text-align: center;
+  border: rgb(20, 21, 105) 3px solid;
+  background-color: rgb(71, 70, 134);
+  border-radius: 30%;
+}
+
+.ground {
+  color: rgb(56, 55, 55);
+  padding: 2px;
+  font-size: 3vw;
+  width: 12vw;
+  text-align: center;
+  border: rgb(63, 60, 46) 3px solid;
+  background-color: rgb(112, 110, 80);
+  border-radius: 30%;
+}
+
+.rock {
+  color: rgb(214, 210, 210);
+  padding: 2px;
+  font-size: 3vw;
+  width: 12vw;
+  text-align: center;
+  border: rgb(75, 74, 70) 3px solid;
+  background-color: rgb(139, 139, 137);
+  border-radius: 30%;
+}
+
+.water {
+  color: rgb(214, 210, 210);
+  padding: 2px;
+  font-size: 3vw;
+  width: 12vw;
+  text-align: center;
+  border: rgb(32, 160, 192) 3px solid;
+  background-color: rgb(155, 179, 192);
+  border-radius: 30%;
+}
+
+.psychic {
+  color: rgb(175, 48, 201);
+  padding: 2px;
+  font-size: 3vw;
+  width: 12vw;
+  text-align: center;
+  border: rgb(190, 121, 176) 3px solid;
+  background-color: rgb(209, 138, 209);
+  border-radius: 30%;
+}
+
+.ice {
+  color: rgb(48, 145, 201);
+  padding: 2px;
+  font-size: 3vw;
+  width: 12vw;
+  text-align: center;
+  border: rgb(200, 235, 233) 3px solid;
+  background-color: rgb(192, 196, 245);
+  border-radius: 30%;
+}
+
+.steel {
+  color: rgb(50, 51, 51);
+  padding: 2px;
+  font-size: 3vw;
+  width: 12vw;
+  text-align: center;
+  border: rgb(108, 109, 109) 3px solid;
+  background-color: rgb(176, 176, 180);
+  border-radius: 30%;
+}
+
+.fighting {
+  color: rgb(231, 217, 14);
+  padding: 2px;
+  font-size: 3vw;
+  width: 12vw;
+  text-align: center;
+  border: rgb(95, 82, 61) 3px solid;
+  background-color: rgb(175, 138, 105);
+  border-radius: 30%;
+}
+
+.normal {
+  color: rgb(28, 48, 59);
+  padding: 2px;
+  font-size: 3vw;
+  width: 12vw;
+  text-align: center;
+  border: rgb(177, 180, 180) 3px solid;
+  background-color: rgb(220, 221, 224);
+  border-radius: 30%;
+}
+
+.dragon {
+  color: rgb(63, 162, 216);
+  padding: 2px;
+  font-size: 3vw;
+  width: 12vw;
+  text-align: center;
+  border: rgb(116, 87, 134) 3px solid;
+  background-color: rgb(170, 171, 240);
+  border-radius: 30%;
+}
+
+.fairy {
+  color: rgb(231, 122, 208);
+  padding: 2px;
+  font-size: 3vw;
+  width: 12vw;
+  text-align: center;
+  border: rgb(230, 208, 233) 3px solid;
+  background-color: rgb(241, 205, 245);
+  border-radius: 30%;
+}
+
+.dark {
+  color: rgb(59, 58, 59);
+  padding: 2px;
+  font-size: 3vw;
+  width: 12vw;
+  text-align: center;
+  border: rgb(56, 54, 56) 3px solid;
+  background-color: rgb(148, 135, 153);
+  border-radius: 30%;
+}
+
+.false {
+  color: rgb(59, 58, 59);
+  padding: 2px;
+  font-size: 2.5vw;
+  width: 12vw;
+  text-align: center;
+  opacity: 50%;
+  border: rgb(56, 54, 56) 3px solid;
+  background-color: rgb(222, 216, 224);
+  border-radius: 30%;
+  text-decoration: line-through;
+}
+
+/*********** Multijugador **************/
+#header {
+  background-color: rgb(97, 118, 124);
+  width: 90vw;
+  margin-left: 5vw;
+  margin-top: 3vh;
+  border-radius: 5px;
+}
+
+#headerMulti {
+  display: flex;
+  flex-wrap: wrap;
+  margin: auto;
+  justify-content: space-around;
+}
+
+#headerMulti > div {
+  display: flex;
+  width: 35vw;
+  margin: auto;
+  flex-direction: column;
+  justify-content: center;
+  background-color: rgb(100, 86, 116);
+  margin-bottom: .5vh;
+  margin-top: .5vh;
+  border-radius: 3px;
+}
+
+#headerMulti > div > h1 {
+  font-size: 4vw;
+  margin: auto;
+  color: lavender;
+}
+
+#configMulti {
+  width: 80vw;
+  margin-top: 5vh;
+  background-color: rgba(117, 115, 115, 0.836);
+  margin-left: 10vw;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+
+#configMulti > div {
+  width: 90vw;
+  display: flex;
+  flex-direction: column;
+}
+
+#configMulti > div > h2 {
+  color: whitesmoke;
+  margin: auto;
+  font-size: 4vw;
+}
+
+#configMulti > div > input {
+  color: rgb(68, 66, 66);
+  margin: auto;
+  width: 30vw;
+  background-color:  rgb(207, 207, 206);
+  border: none;
+  margin-top: 1vh;
+  text-align: center;
+  font-size: 5vw;
+  height: 5vh;
+  border-radius: 3px;
+  font-size: 4vw;
+}
+
+#configMulti > div:first-child {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#configMulti > div:first-child > h1 {
+  font-size: 6vw;
+  color: rgb(196, 182, 201);
+}
+
+#configMulti > div:last-child > div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#configMulti > div:last-child > div > h2 {
+  font-size: 4vw;
+  width: 70vw;
+  text-align: center;
+  color: whitesmoke;
+}
+
+#configMulti > div:last-child > div > button {
+  width: 55vw;
+  height: 4.5vh;
+  border: none;
+  border-radius: 4px;
+  margin: auto;
+  color: rgb(90, 87, 83);
+  font-size: 3vw;
+  margin-bottom: .5vh;
+  background-color: rgb(158, 157, 152);
+
+}
+
+#configMulti > div:last-child > div > button:hover {
+  color: whitesmoke;
+  background-color: rgb(129, 179, 212);
+}
+
+#configMulti > div:last-child > div:last-child > button {
+  width: 45vw;
+  height: 3.3vh;
+  margin-top: 1vh;
+  font-size: 3.5vw;
+  color: whitesmoke;
+  background-color: rgb(171, 118, 192);
+  border: none;
+}
+
+#configMulti > div:last-child > div:last-child > button:hover {
+  color: whitesmoke;
+  background-color: rgb(171, 118, 192);
+}
+
+#divBtnExit {
+  position: absolute;
+  bottom: 8vh;
+  left: 77vw;
+}
+
+#divBtnExit > button {
+  width: 15vw;
+  height: 6vh;
+  background-color: rgb(194, 157, 169);
+  border: none;
+  border-radius: 3px;
+  color: whitesmoke;
+  font-size: 4.5vw;
+}
+
+#waitMulti {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 70vw;
+  margin-left: 15vw;
+  margin-top: 30vh;
+  
+}
+
+#waitMulti > h2 {
+  text-align: center;
+  font-size: 4vw;
+  animation: pulse 3s infinite linear;
+  color: rgb(137, 143, 201);
+}
+
+@keyframes pulse {
+  10% {
+    opacity: 10%;
+  }
+  21% {
+    opacity: 21%;
+
+  }
+  32% {
+    opacity: 32%;
+
+  }
+  45% {
+    opacity: 55%;
+
+  }
+  55% {
+    opacity: 75%;
+
+  }
+  65% {
+    opacity: 100%;
+
+  }
+  85% {
+    opacity: 100%;
+
+  }
+  100% {
+    opacity: 100%;
+
+  }
+}
+
+#waitMulti > img {
+  width: 15vw;
+  animation: rotar 3s infinite linear;
+}
+
+@keyframes rotar {
+  10% {
+    transform: rotate(10deg);
+  }
+  21% {
+    transform: rotate(40deg);
+  }
+  32% {
+    transform: rotate(80deg);
+
+  }
+  45% {
+    transform: rotate(120deg);
+  }
+  55% {
+    transform: rotate(180deg);
+  }
+  65% {
+    transform: rotate(240deg);
+  }
+  85% {
+    transform: rotate(300deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+
+
+}
+
+@media screen and (min-width: 577px) and (max-width: 799px) {
+  /******* Selector Generarion ***********/
+  
+  #divPage > div:last-child {
+    position: fixed;
+    left: 5vw;
+    top: 5vh;
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+    width: 90vw;
+    z-index: 1;
+  }
+  
+  #divPage > div:last-child.is-hidePanel > div:last-child {
+    transform: translate(150%,0%);
+    z-index: 1;
+  }
+  
+  
+  #divPage > div:last-child > div:last-child {
+    display: flex;
+    flex-direction: column;
+    height: 72vh;
+    width: 80vw;
+    border-radius: 10px;
+    justify-content: space-around;
+    background-color: rgba(0, 0, 0, 0.452);
+    transform: translate(-0%,0%);
+    transition: transform .5s ease;
+  }
+  
+  #divPage > div:last-child > div:last-child > div {
+    display: flex;
+    flex-direction: column;
+    height: 60vh;
+  }
+  
+  #divPage > div:last-child > div:last-child > div:first-child {
+    height: 20vh;
+    width: 70vw;
+    margin: auto;
+  }
+  
+  #divPage > div:last-child > div:last-child > div:first-child > h3{
+    width: 70vw;
+    margin: auto;
+    text-align: center;
+    color: rgb(245, 246, 247);
+    font-size: 4vw;
+  }
+  
+  #divPage > div:last-child > div:last-child > div:last-child {
+    height: 10vh;
+  }
+  
+  #divPage > div:last-child > div:last-child > div > button {
+    width: 50vw;
+    height: 5vh;
+    border: none;
+    border-radius: 4px;
+    margin: auto;
+    color: rgb(90, 87, 83);
+    font-size: 3vw;
+    background-color: rgb(158, 157, 152);
+  }
+  
+  #divPage > div:last-child > div:last-child > div > button:hover {
+    color: whitesmoke;
+    background-color: rgb(129, 179, 212);
+  }
+  
+  #divPage > div:last-child > div:last-child > div > button:first-child {
+    color: whitesmoke;
+    background-color: rgb(129, 179, 212);
+  }
+  
+  #divPage > div:last-child > div:last-child > div:last-child > button {
+    width: 45vw;
+    height: 5.5vw;
+    margin-top: 1vh;
+    font-size: 3vw;
+    color: whitesmoke;
+    background-color: rgb(171, 118, 192);
+    border: none;
+  }
+  
+  #divPage > div:last-child > div:last-child > div:last-child > button:hover {
+    color: whitesmoke;
+    background-color: rgb(171, 118, 192);
+  }
+
+  #divPage > div:last-child > div:last-child > div:last-child > h3 {
+    font-size: 2vw;
+    width: auto;
+    color: rgba(218, 218, 218, 0.692);
+    margin: auto;
+    margin-bottom: 5px;
+  }
+  
+  /************* Btn hide ***************/
+  
+  #divBtnHide {
+    position: fixed;
+    top: 78vh;
+    left: 80vw;
+    height: 20vh;
+    margin: auto;
+    width: 10vw;
+    z-index: 2;
+  }
+  
+  #divBtnHide > div {
+    position: relative;
+    display: flex;
+    width: 10vw;
+    flex-direction: column-reverse;
+    justify-content: flex-end;
+    z-index: 100;
+  }
+  
+  #divBtnHide > div > button{
+    position: relative;
+    color: rgb(61, 91, 126);
+    margin: auto;
+    background-color: rgb(197, 213, 226);
+    cursor: pointer;
+    margin-top: 1vh;
+    width: 15vw;
+    border-radius: 10%;
+    height: 6vh;
+    border: none;
+  }
+  
+  #divBtnHide > div:last-child {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 15vw;
+    margin-top: .5vh;
+  }
+  
+  #divBtnHide > div:last-child > div {
+    display: flex;
+  }
+
+  #divBtnHide > div:last-child > div > h3 {
+    font-size: 1.1vw;
+    color: gray;
+  }
+  
+  #divBtnHide > div:last-child > div > img {
+    width: 7vw;
+    height: 2.5vw;
+  }
+
+  #divBtnHide > div:last-child > h3 {
+    position: relative;
+    font-size: 1.3vw;
+    top: -2vh;
+    color: gray;
+  }
+  
+  /************* Buscador ****************/
+  
+  #divPokemonSingle {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 90vw;
+    z-index: -1;
+    margin: auto;
+  }
+  
+  #divPokemonSingle.is-hidePanel {
+    z-index: 2;
+  }
+  
+  #divPage > div:lfirt-child > div {
+    margin: auto;
+  }
+  
+  #divPokemonSingle > div:first-child{
+    margin: auto;
+    margin-top: 10vh;
+    display: flex;
+    flex-direction: column;
+    height: 22vh;
+  }
+  
+  /*pokeball inici*/
+  #divPokemonSingle > div > div > img{
+    width: 20vw;
+    margin: auto;
+    margin-top: 2vh;
+    height: 20vw;
+  }
+  
+  /*pokeball after */
+  #divPokemonSingle > div > div > div > img{
+    width: 20vw;
+    margin: auto;
+    margin-top: 2vh;
+    height: 20vw;
+  }
+  
+  #divPokemonSingle > div > div > button{
+    width: 30vw;
+    height: 3vh;
+    margin: auto;
+    border: none;
+    background-color: rgb(203, 192, 206);
+    border-radius: 4px;
+    color: whitesmoke;
+    cursor: not-allowed;
+  }
+  
+  #btn {
+    margin: auto;
+  }
+  
+  #divCorrect {
+    width: 90vw;
+    margin: auto;
+  }
+  
+  #divCorrect > h2 {
+    margin: auto;
+    text-align: center;
+    font-size: 90vw;
+    color: rgb(44, 155, 44);
+    font-size: 4vw;
+  }
+
+  #divLost {
+    width: 90vw;
+    margin: auto;
+  }
+  
+  #divLost > h2 {
+    margin: auto;
+    text-align: center;
+    font-size: 90vw;
+    color: rgb(204, 84, 29);
+    font-size: 4vw;
+  }
+  
+  #imgPokemon {
+    width: 20vw;
+    filter: brightness(0%);
+  }
+  
+  #imgPokemon.is-correct {
+    filter: brightness(100%);
+  }
+  
+  #divImgShow {
+    width: 50vw;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  #divImgShow > button{
+    margin: auto;
+    border: none;
+    width: 30vw;
+    height: 3vh;
+    font-size: 2vw;
+    background-color: rgb(193, 138, 207);
+    border-radius: 4px;
+    color: whitesmoke;
+  }
+  
+  #divImgPokemonShow > button {
+    border: none;
+    width: 30vw;
+    height: 3vh;
+    border-radius: 10px;
+  }
+
+  #divImgPokemonShow > img {
+    filter: brightness(0%);
+  }
+  
+  #imgPokeballShow {
+    margin: auto;
+    position: relative;
+    width: 10vw;
+    height: 10vw;
+    animation: pokeball 3s infinite linear;
+  }
+  
+  @keyframes pokeball {
+    15% {
+      transform: rotate(2deg);
+    }
+    30% {
+      transform: rotate(4deg);
+    }
+    45% {
+      transform: rotate(2deg);
+    }
+    60% {
+      transform: rotate(0deg);
+    }
+    75% {
+      transform: rotate(-2deg);
+    }
+    85% {
+      transform: rotate(-4deg);
+    }
+    100% {
+      transform: rotate(-1deg);
+    }
+  }
+  
+  #divCircle {
+    position: relative;
+    background-color: red;
+    z-index: 1;
+    top: -12.1vw;
+    left: 23vw;
+    border-radius: 50%;
+    width: 3.9vw;
+    height: 3.9vw;
+    animation: pulse 3s infinite linear;
+  }
+  
+  @keyframes pulse {
+    10% {
+      opacity: 50%;
+    }
+    21% {
+      opacity: 100%;
+  
+    }
+    32% {
+      opacity: 50%;
+  
+    }
+    45% {
+      opacity: 0%;
+  
+    }
+    55% {
+      opacity: 50%;
+  
+    }
+    65% {
+      opacity: 100%;
+  
+    }
+    85% {
+      opacity: 50%;
+  
+    }
+    100% {
+      opacity: 00%;
+  
+    }
+  }
+  
+  #divBuscadorPokemon {
+    width: 90vw;
+    height: auto;
+  }
+  
+  #divBuscadorPokemon > div > h2 {
+    text-align: center;
+    font-size: 4.5vw;
+    color: rgb(39, 121, 175);
+  }
+  
+  #divBuscadorPokemon > div > h3 {
+    text-align: center;
+    font-size: 4.5vw;
+    color: rgba(180, 163, 11, 0.658);
+  }
+  
+  #divBuscadorPokemons {
+    width: 90vw;
+    margin: auto;
+  }
+  
+  #divBuscadorPokemons > div > input {
+    border: none;
+    width: 60vw;
+    text-align: center;
+    height: 5vh;
+    margin: auto;
+    font-size: 4vw;
+    border-radius: 3px;
+  }
+  
+  #divBtnOpc {
+    width: 70vw;
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+  }
+  
+  #divBtnOpc > button {
+    width: 23vw;
+    color: whitesmoke;
+    margin-top: 2vh;
+    height: 3.5vh;
+    font-size: 2vw;
+    border-radius: 10px;
+    background-color: rgba(121, 95, 122, 0.63);
+    border: none;
+  }
+  
+  #divBuscadorPokemons > div {
+    display: flex;
+    margin: auto;
+    flex-direction: row;
+  }
+  
+  #divBuscadorPokemons > div:last-child {
+    width: 90vw;
+    margin: auto;
+  }
+  
+  #divBuscadorPokemons > div > div > button {
+    background-color: rgb(138, 154, 156);
+    border-radius: 3px;
+    border: none;
+    font-size: 1.1vw;
+    color: antiquewhite;
+    cursor: pointer;
+  }
+  
+  #listPokemons {
+    position: relative;
+    display: flex;
+    margin-top: 2vh;
+    flex-direction: column-reverse;
+    z-index: -1;
+  }
+  
+  #listPokemons > div {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    background-color: rgb(213, 219, 219);
+    height: 8vh;
+    margin: auto;
+    margin-top: 1vh;
+    width: 80vw;
+    justify-content: space-around;
+    border-radius: 5px;
+  }
+  
+  #listPokemons > div.true {
+    background-color: rgb(214, 241, 198);
+  }
+  
+  #listPokemons > div > div:first-child {
+    display: flex;
+    border: rgb(133, 139, 138) solid 1px;
+    width: 7vw;
+    border-radius: 50%;
+    height: 7vw;
+    align-items: center;
+  }
+  
+  #listPokemons > div > div:first-child > h1 {
+    color: gray;
+    font-size: 3vw;
+    margin: auto;
+  }
+  
+  #listPokemons > div > div:first-child > h1.is-true {
+    color: green;
+  }
+  
+  #listPokemons > div > div:first-child > h1 > img {
+    width: 2.5vw;
+  }
+  
+  #listPokemons > div > div > h1 {
+    font-size: 3.5vw;
+    color: rgb(142, 119, 151);
+  }
+  
+  /******** Styles Types *********/
+  .flying {
+    color: rgb(243, 233, 233);
+    padding: 2px;
+    font-size: 3vw;
+    width: 12vw;
+    text-align: center;
+    border: rgb(95, 184, 196) 3px solid;
+    background-color: rgb(141, 197, 219);
+    border-radius: 30%;
+  }
+  
+  .electric {
+    color: rgb(209, 120, 37);
+    padding: 2px;
+    font-size: 3vw;
+    width: 12vw;
+    text-align: center;
+    border: rgb(207, 195, 20) 3px solid;
+    background-color: rgb(218, 209, 94);
+    border-radius: 30%;
+  }
+  
+  .poison {
+    color: rgb(221, 176, 247);
+    padding: 2px;
+    font-size: 3vw;
+    width: 12vw;
+    text-align: center;
+    border: rgb(84, 15, 110) 3px solid;
+    background-color: rgb(145, 45, 140);
+    border-radius: 30%;
+  }
+  
+  .grass {
+    color: rgb(33, 73, 36);
+    padding: 2px;
+    font-size: 3vw;
+    width: 12vw;
+    text-align: center;
+    border: rgb(70, 114, 41) 3px solid;
+    background-color: rgb(80, 160, 84);
+    border-radius: 30%;
+  }
+  
+  .bug {
+    color: rgb(10, 175, 21);
+    padding: 2px;
+    font-size: 3vw;
+    width: 12vw;
+    text-align: center;
+    border: rgb(85, 153, 40) 3px solid;
+    background-color: rgb(185, 231, 187);
+    border-radius: 30%;
+  }
+  
+  .fire {
+    color: rgb(163, 7, 7);
+    padding: 2px;
+    font-size: 3vw;
+    width: 12vw;
+    text-align: center;
+    border: rgb(202, 46, 41) 3px solid;
+    background-color: rgb(219, 128, 42);
+    border-radius: 30%;
+  }
+  
+  .ghost {
+    color: rgb(166, 106, 194);
+    padding: 2px;
+    font-size: 3vw;
+    width: 12vw;
+    text-align: center;
+    border: rgb(20, 21, 105) 3px solid;
+    background-color: rgb(71, 70, 134);
+    border-radius: 30%;
+  }
+  
+  .ground {
+    color: rgb(56, 55, 55);
+    padding: 2px;
+    font-size: 3vw;
+    width: 12vw;
+    text-align: center;
+    border: rgb(63, 60, 46) 3px solid;
+    background-color: rgb(112, 110, 80);
+    border-radius: 30%;
+  }
+  
+  .rock {
+    color: rgb(214, 210, 210);
+    padding: 2px;
+    font-size: 3vw;
+    width: 12vw;
+    text-align: center;
+    border: rgb(75, 74, 70) 3px solid;
+    background-color: rgb(139, 139, 137);
+    border-radius: 30%;
+  }
+  
+  .water {
+    color: rgb(214, 210, 210);
+    padding: 2px;
+    font-size: 3vw;
+    width: 12vw;
+    text-align: center;
+    border: rgb(32, 160, 192) 3px solid;
+    background-color: rgb(155, 179, 192);
+    border-radius: 30%;
+  }
+  
+  .psychic {
+    color: rgb(175, 48, 201);
+    padding: 2px;
+    font-size: 3vw;
+    width: 12vw;
+    text-align: center;
+    border: rgb(190, 121, 176) 3px solid;
+    background-color: rgb(209, 138, 209);
+    border-radius: 30%;
+  }
+  
+  .ice {
+    color: rgb(48, 145, 201);
+    padding: 2px;
+    font-size: 3vw;
+    width: 12vw;
+    text-align: center;
+    border: rgb(200, 235, 233) 3px solid;
+    background-color: rgb(192, 196, 245);
+    border-radius: 30%;
+  }
+  
+  .steel {
+    color: rgb(50, 51, 51);
+    padding: 2px;
+    font-size: 3vw;
+    width: 12vw;
+    text-align: center;
+    border: rgb(108, 109, 109) 3px solid;
+    background-color: rgb(176, 176, 180);
+    border-radius: 30%;
+  }
+  
+  .fighting {
+    color: rgb(231, 217, 14);
+    padding: 2px;
+    font-size: 3vw;
+    width: 12vw;
+    text-align: center;
+    border: rgb(95, 82, 61) 3px solid;
+    background-color: rgb(175, 138, 105);
+    border-radius: 30%;
+  }
+  
+  .normal {
+    color: rgb(28, 48, 59);
+    padding: 2px;
+    font-size: 3vw;
+    width: 12vw;
+    text-align: center;
+    border: rgb(177, 180, 180) 3px solid;
+    background-color: rgb(220, 221, 224);
+    border-radius: 30%;
+  }
+  
+  .dragon {
+    color: rgb(63, 162, 216);
+    padding: 2px;
+    font-size: 3vw;
+    width: 12vw;
+    text-align: center;
+    border: rgb(116, 87, 134) 3px solid;
+    background-color: rgb(170, 171, 240);
+    border-radius: 30%;
+  }
+  
+  .fairy {
+    color: rgb(231, 122, 208);
+    padding: 2px;
+    font-size: 3vw;
+    width: 12vw;
+    text-align: center;
+    border: rgb(230, 208, 233) 3px solid;
+    background-color: rgb(241, 205, 245);
+    border-radius: 30%;
+  }
+  
+  .dark {
+    color: rgb(59, 58, 59);
+    padding: 2px;
+    font-size: 3vw;
+    width: 12vw;
+    text-align: center;
+    border: rgb(56, 54, 56) 3px solid;
+    background-color: rgb(148, 135, 153);
+    border-radius: 30%;
+  }
+  
+  .false {
+    color: rgb(59, 58, 59);
+    padding: 2px;
+    font-size: 3vw;
+    width: 12vw;
+    text-align: center;
+    opacity: 50%;
+    border: rgb(56, 54, 56) 3px solid;
+    background-color: rgb(222, 216, 224);
+    border-radius: 30%;
+    text-decoration: line-through;
+  }
+  }
+
+
+@media screen and (min-width: 800px) and (max-width: 1800px) {
+
+/******* Selector Generarion ***********/
+
+#divPage > div:last-child {
+  position: fixed;
+  left: 70vw;
+  top: 3vh;
+  display: flex;
+  align-items: center;
+  width: 50vw;
+  transform: translate(-0%,0%);
+  transition: transform .5s ease;
+}
+
+#divPage > div:last-child.is-hidePanel {
+  transform: translate(50%,0%);
+}
+
+
+#divPage > div:last-child > div:last-child {
+  display: flex;
+  flex-direction: column;
+  height: 70vh;
+  width: 25vw;
+  margin-left: 5vw;
+  justify-content: space-around;
+}
+
+#divPage > div:last-child > div:last-child > div {
+  display: flex;
+  flex-direction: column;
+  height: 40vh;
+}
+
+#divPage > div:last-child > div:last-child > div:first-child {
+  height: 10vh;
+  width: 20vw;
+  margin: auto;
+}
+
+#divPage > div:last-child > div:last-child > div:first-child > h3{
+  width: 20vw;
+  margin: auto;
+  text-align: center;
+  color: dodgerblue;
+  font-size: 1.5vw;
+}
+
+#divPage > div:last-child > div:last-child > div:last-child {
+  height: 20vh;
+}
+
+#divPage > div:last-child > div:last-child > div > button {
+  width: 13vw;
+  height: 4vh;
+  border: none;
+  border-radius: 4px;
+  margin: auto;
+  color: rgb(90, 87, 83);
+  font-size: 1.2vw;
+  background-color: rgb(158, 157, 152);
+}
+
+#divPage > div:last-child > div:last-child > div > button:hover {
+  color: whitesmoke;
+  background-color: rgb(129, 179, 212);
+}
+
+#divPage > div:last-child > div:last-child > div > button:first-child {
+  color: whitesmoke;
+  background-color: rgb(129, 179, 212);
+}
+
+#divPage > div:last-child > div:last-child > div:last-child > button {
+  width: 13vw;
+  margin-top: 10vh;
+  margin: auto;
+  color: whitesmoke;
+  background-color: rgb(171, 118, 192);
+  border: none;
+}
+
+#divPage > div:last-child > div:last-child > div:last-child > button:hover {
+  color: whitesmoke;
+  background-color: rgb(171, 118, 192);
+}
+
+#divPage > div:last-child > div:last-child > div:last-child > button:hover {
+  background-color: rgb(130, 150, 130)
+}
+
+/************* Btn hide ***************/
+#divBtnHide {
+  position: fixed;
+  top: 72vh;
+  left: 80vw;
+  height: 20vh;
+  margin: auto;
+  width: 10vw;
+  z-index: 2;
+}
+
+#divBtnHide > div {
+  position: relative;
+  display: flex;
+  width: 10vw;
+  flex-direction: column-reverse;
+  justify-content: flex-end;
+  z-index: 100;
+}
+
+#divBtnHide > div > button{
+  position: relative;
+  color: rgb(61, 91, 126);
+  margin: auto;
+  background-color: rgb(197, 213, 226);
+  cursor: pointer;
+  margin-top: 1vh;
+  width: 15vw;
+  border-radius: 10%;
+  height: 6vh;
+  border: none;
+}
+
+#divBtnHide > div:last-child {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 20vw;
+  margin-left: -2vw;
+  margin-top: 1vh;
+}
+
+#divBtnHide > div:last-child > div {
+  display: flex;
+}
+
+#divBtnHide > div:last-child > div > h3 {
+  font-size: 1.1vw;
+  color: gray;
+}
+
+#divBtnHide > div:last-child > div > img {
+  width: 7vw;
+  height: 2.5vw;
+}
+
+#divBtnHide > div:last-child > h3 {
+  position: relative;
+  color: gray;
+  font-size: 1.3vw;
+  top: -3vh;
+}
+
+/************* Buscador ****************/
+
+#divPokemonSingle {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 75vw;
+  transition: width .5s ease;
+}
+
+#divPokemonSingle.is-hidePanel {
+  width: 95vw;
+}
+
+#divPokemonSingle > div {
+  margin: auto;
+}
+
+#divPokemonSingle > div:first-child{
+  margin-top: 10vh;
+  display: flex;
+  flex-direction: column;
+  height: 22vh;
+}
+
+#divPokemonSingle > div:first-child > h2{
+  font-size: 3vw;
+  height: 8vw;
+  text-align: center;
+  color: rgb(158, 115, 175);
+}
+
+#divPokemonSingle > div > div > img{
+  width: 10vw;
+  margin-top: 2vh;
+  height: 10vw;
+  margin: auto;
+}
+
+#divPokemonSingle > div > div > div > img{
+  width: 10vw;
+  height: 10vw;
+  margin-top: 2vh;
+  margin: auto;
+}
+
+#divPokemonSingle > div > div > button{
+  margin: auto;
+  border: none;
+  height: 4vh;
+  font-size: 1.5vw;
+  background-color: rgb(203, 192, 206);
+  border-radius: 4px;
+  color: whitesmoke;
+  cursor: not-allowed;
+}
+
+#divImgShow > button{
+  width: 10vw;
+  margin: auto;
+  border: none;
+  background-color: rgb(189, 155, 199);
+  border-radius: 4px;
+  color: whitesmoke;
+  height: 4vh;
+}
+
+#divCorrect > h2 {
+  color: rgb(44, 155, 44);
+  font-size: 3vw;
+}
+
+#divLost > h2 {
+  color: rgb(216, 103, 37);
+  font-size: 3vw;
+}
+
+
+#imgPokemon {
+  width: 12vw;
+  filter: brightness(0%);
+}
+
+#imgPokemon.is-correct {
+  filter: brightness(100%);
+}
+
+#divImgShow {
+  width: 20vw;
+  display: flex;
+  flex-direction: column;
+}
+
+#divImgPokemonShow > button {
+  border: none;
+  border-radius: 3px;
+  height: 4vh;
+}
+
+#divImgShow > button{
+  width: 12vw;
+  margin: auto;
+  border: none;
+  background-color: rgb(193, 138, 207);
+  border-radius: 4px;
+  color: whitesmoke;
+}
+
+#imgPokeballShow {
+  margin: auto;
+  position: relative;
+  width: 10vw;
+  height: 10vw;
+  animation: pokeball 3s infinite linear;
+}
+
+@keyframes pokeball {
+  15% {
+    transform: rotate(2deg);
+  }
+  30% {
+    transform: rotate(4deg);
+  }
+  45% {
+    transform: rotate(2deg);
+  }
+  60% {
+    transform: rotate(0deg);
+  }
+  75% {
+    transform: rotate(-2deg);
+  }
+  85% {
+    transform: rotate(-4deg);
+  }
+  100% {
+    transform: rotate(-1deg);
+  }
+}
+
+#divCircle {
+  position: relative;
+  background-color: red;
+  z-index: 1;
+  top: -6vw;
+  left: 9.05vw;
+  border-radius: 50%;
+  width: 1.9vw;
+  height: 1.9vw;
+  animation: pulse 3s infinite linear;
+}
+
+@keyframes pulse {
+  10% {
+    opacity: 50%;
+  }
+  21% {
+    opacity: 100%;
+
+  }
+  32% {
+    opacity: 50%;
+
+  }
+  45% {
+    opacity: 0%;
+
+  }
+  55% {
+    opacity: 50%;
+
+  }
+  65% {
+    opacity: 100%;
+
+  }
+  85% {
+    opacity: 50%;
+
+  }
+  100% {
+    opacity: 00%;
+
+  }
+}
+
+#divBuscadorPokemon {
+  height: auto;
+}
+
+#divBuscadorPokemon > div > h2 {
+  text-align: center;
+  font-size: 1.5vw;
+  color: rgb(39, 121, 175);
+}
+
+#divBuscadorPokemon > div > h3 {
+  text-align: center;
+  font-size: 1.2vw;
+  color: rgba(180, 163, 11, 0.658);
+}
+
+#divBuscadorPokemons {
+  width: 50vw;
+  margin: auto;
+}
+
+#divBuscadorPokemons > div > input {
+  border: none;
+  width: 20vw;
+  text-align: center;
+  height: 3vh;
+  margin: auto;
+  font-size: 1.3vw;
+  border-radius: 3px;
+}
+
+#divBuscadorPokemons > div {
+  display: flex;
+  margin: auto;
+  flex-direction: row;
+}
+
+#divBtnOpc {
+  display: flex;
+  justify-content: space-around;
+}
+
+#divBtnOpc > button {
+  margin-top: 1vh;
+  font-size: 1.5vw;
+  border: none;
+  padding: 2px 5px;
+  border-radius: 5px;
+  color: rgb(252, 248, 248);
+  background-color: rgb(152, 152, 185);
+}
+
+#divBuscadorPokemons > div:last-child {
+  width: 50vw;
+  margin: auto;
+}
+
+#divBuscadorPokemons > div > div {
+  display: flex;
+  margin: auto;
+  margin-top: 1vh;
+}
+
+#divBuscadorPokemons > div > div > button {
+  background-color: rgb(138, 154, 156);
+  border-radius: 3px;
+  border: none;
+  font-size: 1.1vw;
+  color: antiquewhite;
+  cursor: pointer;
+}
+
+#listPokemons {
+  display: flex;
+  margin-top: 2vh;
+  flex-direction: column-reverse;
+}
+
+#listPokemons > div {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  background-color: rgb(211, 218, 218);
+  height: 8vh;
+  margin: auto;
+  margin-top: 1vh;
+  width: 40vw;
+  justify-content: space-around;
+  border-radius: 5px;
+}
+
+#listPokemons > div.true {
+  background-color: rgb(214, 241, 198);
+}
+
+#listPokemons > div > div:first-child {
+  display: flex;
+  border: rgb(133, 139, 138) solid 1px;
+  width: 3.5vw;
+  border-radius: 50%;
+  height: 3.5vw;
+  align-items: center;
+}
+
+#listPokemons > div > div:first-child > h1 {
+  color: gray;
+  font-size: 2vw;
+  margin: auto;
+}
+
+#listPokemons > div > div:first-child > h1.is-true {
+  color: green;
+}
+
+#listPokemons > div > div:first-child > h1 > img {
+  width: 1.5vw;
+}
+
+#listPokemons > div > div > h1 {
+  font-size: 2vw;
+  color: rgb(142, 119, 151);
+}
+
+/******** Styles Types *********/
+.flying {
+  color: rgb(243, 233, 233);
+  padding: 2px;
+  font-size: 1.5vw;
+  width: 6vw;
+  text-align: center;
+  border: rgb(95, 184, 196) 3px solid;
+  background-color: rgb(141, 197, 219);
+  border-radius: 30%;
+}
+
+.electric {
+  color: rgb(209, 120, 37);
+  padding: 2px;
+  font-size: 1.5vw;
+  width: 6vw;
+  text-align: center;
+  border: rgb(207, 195, 20) 3px solid;
+  background-color: rgb(218, 209, 94);
+  border-radius: 30%;
+}
+
+.poison {
+  color: rgb(221, 176, 247);
+  padding: 2px;
+  font-size: 1.5vw;
+  width: 6vw;
+  text-align: center;
+  border: rgb(84, 15, 110) 3px solid;
+  background-color: rgb(145, 45, 140);
+  border-radius: 30%;
+}
+
+.grass {
+  color: rgb(33, 73, 36);
+  padding: 2px;
+  font-size: 1.5vw;
+  width: 6vw;
+  text-align: center;
+  border: rgb(70, 114, 41) 3px solid;
+  background-color: rgb(80, 160, 84);
+  border-radius: 30%;
+}
+
+.bug {
+  color: rgb(10, 175, 21);
+  padding: 2px;
+  font-size: 1.5vw;
+  width: 6vw;
+  text-align: center;
+  border: rgb(85, 153, 40) 3px solid;
+  background-color: rgb(185, 231, 187);
+  border-radius: 30%;
+}
+
+.fire {
+  color: rgb(163, 7, 7);
+  padding: 2px;
+  font-size: 1.5vw;
+  width: 6vw;
+  text-align: center;
+  border: rgb(202, 46, 41) 3px solid;
+  background-color: rgb(219, 128, 42);
+  border-radius: 30%;
+}
+
+.ghost {
+  color: rgb(166, 106, 194);
+  padding: 2px;
+  font-size: 1.5vw;
+  width: 6vw;
+  text-align: center;
+  border: rgb(20, 21, 105) 3px solid;
+  background-color: rgb(71, 70, 134);
+  border-radius: 30%;
+}
+
+.ground {
+  color: rgb(56, 55, 55);
+  padding: 2px;
+  font-size: 1.5vw;
+  width: 7vw;
+  text-align: center;
+  border: rgb(63, 60, 46) 3px solid;
+  background-color: rgb(112, 110, 80);
+  border-radius: 30%;
+}
+
+.rock {
+  color: rgb(214, 210, 210);
+  padding: 2px;
+  font-size: 1.5vw;
+  width: 6vw;
+  text-align: center;
+  border: rgb(75, 74, 70) 3px solid;
+  background-color: rgb(139, 139, 137);
+  border-radius: 30%;
+}
+
+.water {
+  color: rgb(214, 210, 210);
+  padding: 2px;
+  font-size: 1.5vw;
+  width: 6vw;
+  text-align: center;
+  border: rgb(32, 160, 192) 3px solid;
+  background-color: rgb(155, 179, 192);
+  border-radius: 30%;
+}
+
+.psychic {
+  color: rgb(175, 48, 201);
+  padding: 2px;
+  font-size: 1.5vw;
+  width: 6vw;
+  text-align: center;
+  border: rgb(190, 121, 176) 3px solid;
+  background-color: rgb(209, 138, 209);
+  border-radius: 30%;
+}
+
+.ice {
+  color: rgb(48, 145, 201);
+  padding: 2px;
+  font-size: 1.5vw;
+  width: 6vw;
+  text-align: center;
+  border: rgb(200, 235, 233) 3px solid;
+  background-color: rgb(192, 196, 245);
+  border-radius: 30%;
+}
+
+.steel {
+  color: rgb(50, 51, 51);
+  padding: 2px;
+  font-size: 1.5vw;
+  width: 6vw;
+  text-align: center;
+  border: rgb(108, 109, 109) 3px solid;
+  background-color: rgb(176, 176, 180);
+  border-radius: 30%;
+}
+
+.fighting {
+  color: rgb(231, 217, 14);
+  padding: 2px;
+  font-size: 1.5vw;
+  width: 7vw;
+  text-align: center;
+  border: rgb(95, 82, 61) 3px solid;
+  background-color: rgb(175, 138, 105);
+  border-radius: 30%;
+}
+
+.normal {
+  color: rgb(28, 48, 59);
+  padding: 2px;
+  font-size: 1.5vw;
+  width: 6vw;
+  text-align: center;
+  border: rgb(177, 180, 180) 3px solid;
+  background-color: rgb(220, 221, 224);
+  border-radius: 30%;
+}
+
+.dragon {
+  color: rgb(63, 162, 216);
+  padding: 2px;
+  font-size: 1.5vw;
+  width: 6vw;
+  text-align: center;
+  border: rgb(116, 87, 134) 3px solid;
+  background-color: rgb(170, 171, 240);
+  border-radius: 30%;
+}
+
+.fairy {
+  color: rgb(231, 122, 208);
+  padding: 2px;
+  font-size: 1.5vw;
+  width: 6vw;
+  text-align: center;
+  border: rgb(230, 208, 233) 3px solid;
+  background-color: rgb(241, 205, 245);
+  border-radius: 30%;
+}
+
+.dark {
+  color: rgb(59, 58, 59);
+  padding: 2px;
+  font-size: 1.5vw;
+  width: 6vw;
+  text-align: center;
+  border: rgb(56, 54, 56) 3px solid;
+  background-color: rgb(148, 135, 153);
+  border-radius: 30%;
+}
+
+.false {
+  color: rgb(59, 58, 59);
+  padding: 2px;
+  font-size: 1.5vw;
+  width: 6vw;
+  text-align: center;
+  opacity: 50%;
+  border: rgb(56, 54, 56) 3px solid;
+  background-color: rgb(222, 216, 224);
+  border-radius: 30%;
+  text-decoration: line-through;
+}
+
+.is-active {
+  background-color: blue;
+}
+
+.is-default {
+  background-color: brown;
+}
+
+}
