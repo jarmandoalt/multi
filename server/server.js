@@ -34,6 +34,16 @@ io.on("connection", (socket) => {
     socket.broadcast.emit("updateData", updateData);
   });
 
+  socket.on("startGame", (startGame) => {
+    console.log("startGame", startGame);
+    socket.broadcast.emit("startGame", startGame);
+  });
+
+  socket.on("correct", (correct) => {
+    console.log("correct", correct);
+    socket.broadcast.emit("correct", correct);
+  });
+
   socket.on("exitMember", (exitMember) => {
     console.log("exitMember ", exitMember);
     socket.broadcast.to(exitMember.nameServer).emit("exitMember", exitMember)

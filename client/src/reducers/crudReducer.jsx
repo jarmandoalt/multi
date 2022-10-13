@@ -18,8 +18,18 @@ export const initialState = {
     scoreMember2: 0,
     nameMember3: "",
     scoreMember3: 0,
-    myNumber: 0
+    myNumber: 0,
+    numberGames: 3,
+    round: 1,
+    timeShowShadow: 45,
+    timeRes: 0,
+    hitCounter: 0,
+    timeSec: 0
   },
+  showConfig: true,
+  showMenu: false,
+  countdown: false,
+  noCorrect: false
 };
 
 const crudReducer = createSlice({
@@ -28,9 +38,10 @@ const crudReducer = createSlice({
   reducers: {
     READ_ALL_DATA_1: (state, action) => {
       if (state.dbPokemon1.length === 0) {
-        state.dbPokemon1.push(...state.dbPokemon1);
+        state.dbPokemon1.push(...action.payload);
+      }else {
+        state.dbPokemon1.push(...action.payload);
       }
-      state.dbPokemon1.push(...action.payload);
     },
     DELETE_ALL_DATA: (state, action) => {
       state.dbPokemon1 = [];
@@ -47,6 +58,7 @@ const crudReducer = createSlice({
       );
     },
     DATA_SERVER: (state, action) => {
+      console.log(action.payload);
       state.dataServer = Object.assign(state.dataServer, action.payload);
     },
     DELETE_DATA_SERVER: (state, action) => {
@@ -65,7 +77,25 @@ const crudReducer = createSlice({
         scoreMember2: 0,
         nameMember3: "",
         scoreMember3: 0,
+        myNumber: 0,
+        numberGames: 3,
+        timeShowShadow: 45,
+        timeRes: 0,
+        timeSec: 0
       };
+    },
+    SHOW_CONFIG: (state, action) => {
+      state.showConfig = action.payload
+    },
+    SHOW_MENU: (state, action) => {
+      state.showMenu = action.payload
+    },
+    COUNTDOWN: (state, action) => {
+      state.countdown = action.payload
+    },
+    NOCORRECT: (state, action) => {
+      state.noCorrect = action.payload
+      console.log(action.payload);
     },
   },
 });
@@ -76,7 +106,11 @@ export const {
   DELETE_ALL_DATA,
   DELETE_POKEMON,
   DATA_SERVER,
-  DELETE_DATA_SERVER
+  DELETE_DATA_SERVER,
+  SHOW_CONFIG,
+  SHOW_MENU,
+  COUNTDOWN,
+  NOCORRECT
 } = crudReducer.actions;
 
 export default crudReducer.reducer;

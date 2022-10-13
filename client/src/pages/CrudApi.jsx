@@ -12,6 +12,7 @@ import {
 import pokeball from "../assets/pokeball.png";
 import arrowUp from "../assets/arrow-up.svg";
 import pokeapi from "../assets/pokeapi.png";
+import llave from "../assets/llave.png";
 import arrowDown from "../assets/arrow-down.svg";
 import {
   getPokemonList,
@@ -35,6 +36,7 @@ const CrudApi = () => {
     [hidePanel, setHidePanel] = useState(false),
     [showCorrect, setShowCorrect] = useState(false),
     [counter, setCounter] = useState(0),
+    [countShowPokemon, setCountShowPokemon] = useState(0),
     [focusSelect, setFocus] = useState(""),
     [busquedaPokemon, setBusquedaPokemon] = useState(""),
     [namePokemonSelect, setNamePokemonSelect] = useState([]),
@@ -46,7 +48,8 @@ const CrudApi = () => {
     refImgSelect = createRef(),
     refPanel = createRef(),
     navigate = useNavigate(),
-    refPanelPokeball = createRef();
+    refPanelPokeball = createRef(),
+    refBtnMenu = createRef();
 
   /* document.addEventListener("keydown", (e) => {
     let $input = document.getElementById("buscador");
@@ -95,7 +98,66 @@ const CrudApi = () => {
           auxGen = index;
         }
       }
+
       if (response.data.types.length === 2) {
+        //Guardar pokemon si tiene dos tipos
+
+        if (dbPokemonSelect.types.length === 2) {
+          if (
+            dbPokemonSelect.types[0].type.name ===
+            response.data.types[0].type.name
+          ) {
+            countShowPokemon < 3
+              ? setCountShowPokemon(countShowPokemon + 1)
+              : null;
+          } else {
+            if (
+              dbPokemonSelect.types[0].type.name ===
+              response.data.types[1].type.name
+            ) {
+              countShowPokemon < 3
+                ? setCountShowPokemon(countShowPokemon + 1)
+                : null;
+            } else {
+              if (
+                dbPokemonSelect.types[1].type.name ===
+                response.data.types[0].type.name
+              ) {
+                countShowPokemon < 3
+                  ? setCountShowPokemon(countShowPokemon + 1)
+                  : null;
+              } else {
+                if (
+                  dbPokemonSelect.types[1].type.name ===
+                  response.data.types[1].type.name
+                ) {
+                  countShowPokemon < 3
+                    ? setCountShowPokemon(countShowPokemon + 1)
+                    : null;
+                }
+              }
+            }
+          }
+        } else {
+          if (
+            dbPokemonSelect.types[0].type.name ===
+            response.data.types[0].type.name
+          ) {
+            countShowPokemon < 3
+              ? setCountShowPokemon(countShowPokemon + 1)
+              : null;
+          } else {
+            if (
+              dbPokemonSelect.types[0].type.name ===
+              response.data.types[1].type.name
+            ) {
+              countShowPokemon < 3
+                ? setCountShowPokemon(countShowPokemon + 1)
+                : null;
+            }
+          }
+        }
+
         setArrPokemons([
           ...arrPokemons,
           {
@@ -109,6 +171,37 @@ const CrudApi = () => {
           },
         ]);
       } else {
+        //Guardar pokemon si tiene un  tipo
+
+        if (dbPokemonSelect.types.length === 2) {
+          if (
+            dbPokemonSelect.types[0].type.name ===
+            response.data.types[0].type.name
+          ) {
+            countShowPokemon < 3
+              ? setCountShowPokemon(countShowPokemon + 1)
+              : null;
+          } else {
+            if (
+              dbPokemonSelect.types[1].type.name ===
+              response.data.types[0].type.name
+            ) {
+              countShowPokemon < 3
+                ? setCountShowPokemon(countShowPokemon + 1)
+                : null;
+            }
+          }
+        } else {
+          if (
+            dbPokemonSelect.types[0].type.name ===
+            response.data.types[0].type.name
+          ) {
+            countShowPokemon < 3
+              ? setCountShowPokemon(countShowPokemon + 1)
+              : null;
+          }
+        }
+
         setArrPokemons([
           ...arrPokemons,
           {
@@ -125,6 +218,7 @@ const CrudApi = () => {
   };
 
   const control = (e) => {
+    //controlar con teclado
     switch (e.keyCode) {
       case 39:
         focusSelect.nextElementSibling.focus();
@@ -152,6 +246,7 @@ const CrudApi = () => {
   };
 
   const controlInput = (e) => {
+    //control teclado
     let $divBtn = document.getElementById("divBtnOpc");
 
     switch (e.keyCode) {
@@ -189,6 +284,7 @@ const CrudApi = () => {
   };
 
   const handleBtnGeneration = (e) => {
+    //btn de menu
     if (arrGeneration.includes(Number(e.target.slot))) {
       setArrGeneration(
         arrGeneration.filter((item) => item !== Number(e.target.slot))
@@ -207,16 +303,80 @@ const CrudApi = () => {
     setBusquedaPokemon("");
     setNamePokemonSelect([]);
     setArrPokemons([]);
+    setCountShowPokemon(0);
     setShowCorrect(false);
     setShowImg(false);
     for (let index = 0; index < arrGeneration.length; index++) {
       loadPokemon1(arrGeneration[index]);
     }
-    let auxNum = Math.floor(Math.random() * (arrGeneration.length + 1 - 1 + 1));
+    let auxNumArra = Math.floor(Math.random() * (arrGeneration.length - 1 + 1));
+
     if (arrGeneration.length === 1) {
-      loadselect(arrGeneration[0]);
+      let max, min;
+      switch (arrGeneration[0]) {
+        case 151:
+          min = 0;
+          break;
+        case 100:
+          min = 151;
+          break;
+        case 135:
+          min = 251;
+          break;
+        case 107:
+          min = 386;
+          break;
+        case 156:
+          min = 493;
+          break;
+        case 72:
+          min = 649;
+          break;
+        case 88:
+          min = 721;
+          break;
+        case 89:
+          min = 809;
+          break;
+        default:
+          break;
+      }
+      max = min + arrGeneration[0];
+      let auxNum = Math.floor(Math.random() * (max - min + 1) + min);
+      loadselect(auxNum);
     } else {
-      loadselect(arrGeneration[auxNum - 1]);
+      let max, min;
+      switch (arrGeneration[auxNumArra]) {
+        case 151:
+          min = 0;
+          break;
+        case 100:
+          min = 151;
+          break;
+        case 135:
+          min = 251;
+          break;
+        case 107:
+          min = 386;
+          break;
+        case 156:
+          min = 493;
+          break;
+        case 72:
+          min = 649;
+          break;
+        case 88:
+          min = 721;
+          break;
+        case 89:
+          min = 809;
+          break;
+        default:
+          break;
+      }
+      max = min + arrGeneration[auxNumArra];
+      let auxNum = Math.floor(Math.random() * (max - min + 1) + min);
+      loadselect(auxNum);
     }
     refPanel.current.classList.add("is-hidePanel");
     refPanelPokeball.current.classList.add("is-hidePanel");
@@ -258,13 +418,14 @@ const CrudApi = () => {
   const selectNamePokemon = async (e) => {
     e.preventDefault();
     if (e.target.value === dbPokemonSelect.name) {
-      if (showImg) {
+      if (showImg === true) {
+        console.log("4");
         setShowCorrect(true);
-        refImgSelect.current.classList.add("is-correct");
         setDisableBtn(true);
+        refImgSelect.current.classList.add("is-correct");
       } else {
-        setShowCorrect(true);
         setShowImg(true);
+        setShowCorrect(true);
         setDisableBtn(true);
       }
     }
@@ -287,12 +448,14 @@ const CrudApi = () => {
     setDisableBtn(true);
   };
 
-  const sendSocket = (name, value) => {
-    socket.emit("selection", {
-      name: name,
-      value: value,
-    });
-  };
+  useEffect(() => {
+    //mostrar pokemon cuando se adivino
+    if (showCorrect === true) {
+      if (refImgSelect.current) {
+        refImgSelect.current.classList.add("is-correct");
+      }
+    }
+  }, [refImgSelect]);
 
   const handlerServer = (e) => {
     e.preventDefault();
@@ -318,7 +481,7 @@ const CrudApi = () => {
             tagName: dataServer.name,
             rol: "member",
             nomMember: response.data.server[0].countMembers,
-            idServer: response.data.server[0]._id
+            idServer: response.data.server[0]._id,
           });
           navigate("/home/room");
         }
@@ -452,14 +615,18 @@ const CrudApi = () => {
                     ref={refImgSelect}
                     width="20vw"
                     src={dbPokemonSelect.sprites.front_default}
-                    alt=""
+                    alt="pokemon65"
                   />
                 </div>
-              ) : (
+              ) : countShowPokemon === 3 ? ( //cuando son tres llaves las obtenidas
                 <div id="divImgShow">
                   <button id="btn" onClick={() => setShowImg(true)}>
                     {" "}
                     Show Pokemon
+                    <br /> 
+                    <img className="is-active" src={llave} alt="key1" />
+                    <img className="is-active" src={llave} alt="key2" />
+                    <img className="is-active" src={llave} alt="key3" />
                   </button>
                   <img
                     id="imgPokeballShow"
@@ -469,6 +636,96 @@ const CrudApi = () => {
                   />
                   <div id="divCircle"></div>
                 </div>
+              ) : (
+                countShowPokemon === 2 ? //cuando son dos llaves las obtenidas
+                <div id="divImgShow">
+                  <button
+                    disabled
+                    style={{
+                      color: "white",
+                      cursor: "not-allowed",
+                      width: "35vw",
+                      backgroundColor: "rgb(203, 192, 206)",
+                    }}
+                  >
+                    {" "}
+                    Show Pokemon
+                    <br />
+                    <img className="is-active" src={llave} alt="key1" />
+                    <img className="is-active" src={llave} alt="key2" />
+                    <img style={{
+                    filter: "brightness(50%)",
+                  }} src={llave} alt="key3" />
+                  </button>
+                  <img
+                    id="imgPokeballShow"
+                    src={pokeball}
+                    width="20vw"
+                    alt=""
+                  />
+                  <div id="divCircle"></div>
+                </div>:
+                countShowPokemon === 1 ? //cuando es una llave las obtenida
+                <div id="divImgShow">
+                  <button
+                    disabled
+                    style={{
+                      color: "white",
+                      cursor: "not-allowed",
+                      width: "35vw",
+                      backgroundColor: "rgb(203, 192, 206)",
+                    }}
+                  >
+                    {" "}
+                    Show Pokemon
+                    <br />
+                    <img className="is-active" src={llave} alt="key1" />
+                    <img style={{
+                    filter: "brightness(50%)",
+                  }} src={llave} alt="key2" />
+                    <img style={{
+                    filter: "brightness(50%)",
+                  }} src={llave} alt="key3" />
+                  </button>
+                  <img
+                    id="imgPokeballShow"
+                    src={pokeball}
+                    width="20vw"
+                    alt=""
+                  />
+                  <div id="divCircle"></div>
+                </div> : 
+                <div id="divImgShow">
+                <button
+                  disabled
+                  style={{
+                    color: "white",
+                    cursor: "not-allowed",
+                    width: "35vw",
+                    backgroundColor: "rgb(203, 192, 206)",
+                  }}
+                >
+                  {" "}
+                  Show Pokemon
+                  <br />
+                  <img style={{
+                    filter: "brightness(50%)",
+                  }} src={llave} alt="key1" />
+                  <img style={{
+                    filter: "brightness(50%)",
+                  }} src={llave} alt="key2" />
+                  <img style={{
+                    filter: "brightness(50%)",
+                  }} src={llave} alt="key3" />
+                </button>
+                <img
+                  id="imgPokeballShow"
+                  src={pokeball}
+                  width="20vw"
+                  alt=""
+                />
+                <div id="divCircle"></div>
+              </div>
               )}
             </div>
           ) : (
@@ -476,7 +733,31 @@ const CrudApi = () => {
               id="divInicioPokeball"
               style={{ display: "flex", flexDirection: "column" }}
             >
-              <button disabled> Show Pokemon</button>
+              <button disabled>
+                {" "}
+                Show Pokemon <br />
+                <img
+                  style={{
+                    filter: "brightness(50%)",
+                  }}
+                  src={llave}
+                  alt="key1"
+                />
+                <img
+                  style={{
+                    filter: "brightness(50%)",
+                  }}
+                  src={llave}
+                  alt="key2"
+                />
+                <img
+                  style={{
+                    filter: "brightness(50%)",
+                  }}
+                  src={llave}
+                  alt="key3"
+                />
+              </button>
               <img src={pokeball} alt="" />
             </div>
           )}
@@ -668,10 +949,15 @@ const CrudApi = () => {
                 setHidePanel(false);
                 refPanel.current.classList.remove("is-hidePanel");
                 refPanelPokeball.current.classList.remove("is-hidePanel");
+                refBtnMenu.current.classList.toggle("is-active");
               }}
+              ref={refBtnMenu}
+              className="hamburger hamburger--arrow-r is-active"
+              type="button"
             >
-              {" "}
-              SHOW{" "}
+              <span className="hamburger-box">
+                <span className="hamburger-inner"></span>
+              </span>
             </button>
           ) : (
             <button
@@ -679,10 +965,15 @@ const CrudApi = () => {
                 setHidePanel(true);
                 refPanelPokeball.current.classList.add("is-hidePanel");
                 refPanel.current.classList.add("is-hidePanel");
+                refBtnMenu.current.classList.toggle("is-active");
               }}
+              ref={refBtnMenu}
+              className="hamburger hamburger--arrow-r is-active"
+              type="button"
             >
-              {" "}
-              HIDE{" "}
+              <span className="hamburger-box">
+                <span className="hamburger-inner"></span>
+              </span>
             </button>
           )}
           <button onClick={handleReload}> RELOAD </button>
@@ -703,7 +994,7 @@ const CrudApi = () => {
           <div>
             <button slot="151" onClick={handleBtnGeneration}>
               {" "}
-              1° Generation{" "}
+              1° <br /> Generation{" "}
             </button>
             <button slot="100" onClick={handleBtnGeneration}>
               {" "}

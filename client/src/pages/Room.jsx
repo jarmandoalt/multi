@@ -6,20 +6,19 @@ import {
   getPokemon,
   getPokemonSelect,
 } from "../services/routesPokemon";
-import { DATA_SERVER, DELETE_DATA_SERVER } from "../reducers/crudReducer";
+import { DATA_SERVER, DELETE_DATA_SERVER, SHOW_MENU } from "../reducers/crudReducer";
 import { deleteServer, updateCountMembers } from "../services/routes";
-import { useNavigate } from "react-router-dom";
 import HeaderMulti from "../compMulti/HeaderMulti";
 import ConfigMulti from "../compMulti/ConfigMulti";
 import WaitMember from "../compMulti/WaitMember";
-import config from '../assets/more-vertical.svg'
+import config from "../assets/more-vertical.svg";
+import ShowMenu from "../compMulti/ShowMenu";
 
 const Room = () => {
   const [nameServer, setNameServer] = useState(""),
-    { dbPokemon1, dbPokemonSelect, dataServer } = useSelector(
+    { dbPokemon1, dbPokemonSelect, dataServer, showMenu } = useSelector(
       (state) => state.crud
     ),
-    navigate = useNavigate(),
     dispatch = useDispatch();
 
   //Listen Socket
@@ -160,41 +159,27 @@ const Room = () => {
     }
   };
 
-  const exitServer = async (e) => {
-    if (e.target.value == dataServer.adminId) {
-      await deleteServer(dataServer.nameServer);
-      dispatch(DELETE_DATA_SERVER());
-      navigate("/home");
-    } else {
-      //exit member
-      await updateCountMembers(
-        // update number members DB
-        dataServer.idServer,
-        dataServer.countMembers - 1
-      );
-      dispatch(DELETE_DATA_SERVER()); //delete data server
-      socket.emit("exitMember", {
-        nameMember: dataServer.name,
-        nameServer: dataServer.nameServer,
-        nameMember1: dataServer.nameMember1,
-        nameMember2: dataServer.nameMember2,
-        nameMember3: dataServer.nameMember3,
-        countMembers: dataServer.countMembers,
-        myNumber: dataServer.myNumber,
-      });
-      navigate("/home"); //Return menu
-    }
-  };
-
   return (
     <div>
       <HeaderMulti></HeaderMulti>
-      {dataServer.id == dataServer.adminId ? <ConfigMulti /> : <WaitMember />}
+      {
+        dataServer.id == dataServer.adminId ? (
+          <div>
+            <ConfigMulti />
+            <ShowMenu />
+          </div>
+        ) : (
+          <div>
+            <WaitMember />
+            <ShowMenu />
+          </div>
+        )
+        }
       <div id="divBtnExit">
         <button
           name={dataServer.name}
           value={dataServer.id}
-          onClick={exitServer}
+          onClick={() => {showMenu ? dispatch(SHOW_MENU(false)): dispatch(SHOW_MENU(true))}}
         >
           {" "}
           <img src={config} alt="" />{" "}
